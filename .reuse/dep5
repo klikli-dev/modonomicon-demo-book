@@ -1,0 +1,12 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: modonomicon-demo-book
+Upstream-Contact: klikli-dev
+Source: https://github.com/klikli-dev/modonomicon-demo-book
+
+Files: src/main/resources/*
+Copyright: 2022 klikli-dev
+License: CC-BY-4.0
+
+Files: src/generated/resources/*
+Copyright: 2022 klikli-dev
+License: CC-BY-4.0
