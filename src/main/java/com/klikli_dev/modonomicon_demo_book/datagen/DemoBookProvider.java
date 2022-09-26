@@ -38,6 +38,8 @@ public class DemoBookProvider extends BookProvider {
         //we tell the helper the book we're in.
         helper.book(bookName);
 
+        var featuresCategory = this.makeFeaturesCategory(helper);
+
         //Now we create the book with settings of our choosing
         var demoBook = BookModel.builder()
                 .withId(this.modLoc(bookName)) //the id of the book. modLoc() prepends the mod id.
@@ -46,10 +48,33 @@ public class DemoBookProvider extends BookProvider {
                 .withGenerateBookItem(true) //auto-generate a book item for us.
                 .withModel(new ResourceLocation("modonomicon:modonomicon_red")) //use the default red modonomicon icon for the book
                 .withCreativeTab("modonomicon") //and put it in the modonomicon tab
+                .withCategories(featuresCategory)
                 .build();
         return demoBook;
     }
 
+    private BookCategoryModel makeFeaturesCategory(BookLangHelper helper) {
+        helper.category("features"); //tell our lang helper the category we are in
+
+        //the entry helper is the second helper for book datagen
+        //it allows us to place entries in the category without manually defining the coordinates.
+        //each letter can be used to represent an entry
+        var entryHelper = ModonomiconAPI.get().getEntryLocationHelper();
+        entryHelper.setMap(
+                "_____________________",
+                "__m______________d___",
+                "__________r__________",
+                "__c__________________",
+                "__________2___3___i__",
+                "__s_____e____________"
+        );
+
+        return BookCategoryModel.builder()
+                .withId(this.modLoc(helper.category)) //the id of the category, as stored in the lang helper. modLoc() prepends the mod id.
+                .withName(helper.categoryName()) //the name of the category. The lang helper gives us the correct translation key.
+                .withIcon("minecraft:nether_star") //the icon for the category. In this case we simply use an existing item.
+                .build();
+    }
 
     @Override
     protected void generate() {
