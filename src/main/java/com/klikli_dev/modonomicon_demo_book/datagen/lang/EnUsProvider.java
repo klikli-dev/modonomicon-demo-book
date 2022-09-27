@@ -25,6 +25,13 @@ public class EnUsProvider extends LanguageProvider {
         helper.book("demo"); //we tell the helper the book we're in.
         this.add(helper.bookName(), "Demo Book"); //and now we add the actual textual book name
         this.add(helper.bookTooltip(), "A book to showcase & test Modonomicon features."); //and the tooltip text
+
+        this.addDemoBookFeaturesCategory(helper);
+    }
+
+    private void addDemoBookFeaturesCategory(BookLangHelper helper) {
+        helper.category("features"); //tell the helper the category we are in
+        this.add(helper.categoryName(), "Features Category"); //annd provide the category name text
     }
 
     protected void addTranslations() {
