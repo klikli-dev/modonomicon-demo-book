@@ -1,5 +1,11 @@
 {
+  "book.modonomicon_demo_book.demo.features.multiblock.description": "An entry showcasing a multiblock.",
+  "book.modonomicon_demo_book.demo.features.multiblock.intro.text": "Multiblock pages allow to preview multiblocks both in the book and in the world.",
+  "book.modonomicon_demo_book.demo.features.multiblock.intro.title": "Multiblock Page",
+  "book.modonomicon_demo_book.demo.features.multiblock.multiblock.text": "A sample multiblock.",
+  "book.modonomicon_demo_book.demo.features.multiblock.name": "Multiblock Entry",
   "book.modonomicon_demo_book.demo.features.name": "Features Category",
   "book.modonomicon_demo_book.demo.name": "Demo Book",
-  "book.modonomicon_demo_book.demo.tooltip": "A book to showcase & test Modonomicon features."
+  "book.modonomicon_demo_book.demo.tooltip": "A book to showcase & test Modonomicon features.",
+  "multiblocks.modonomicon.blockentity": "Blockentity Multiblock."
 }
