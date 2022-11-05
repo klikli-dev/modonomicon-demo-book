@@ -12,23 +12,11 @@ import com.klikli_dev.modonomicon.api.datagen.BookProvider;
 import com.klikli_dev.modonomicon.api.datagen.EntryLocationHelper;
 import com.klikli_dev.modonomicon.api.datagen.book.BookCategoryModel;
 import com.klikli_dev.modonomicon.api.datagen.book.BookEntryModel;
-import com.klikli_dev.modonomicon.api.datagen.book.BookEntryParentModel;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookMultiblockPageModel;
-import com.klikli_dev.modonomicon.api.datagen.book.page.BookSpotlightPageModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookTextPageModel;
-import com.mojang.logging.LogUtils;
-import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.crafting.Ingredient;
-import org.slf4j.Logger;
-
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
 
 public class DemoBookProvider extends BookProvider {
 
@@ -91,17 +79,17 @@ public class DemoBookProvider extends BookProvider {
         helper.page("intro"); //and now the page
         var multiBlockIntroPage =
                 BookTextPageModel.builder() //we start with a text page
-                .withText(helper.pageText()) //lang key for the text
-                .withTitle(helper.pageTitle()) //and for the title
-                .build();
+                        .withText(helper.pageText()) //lang key for the text
+                        .withTitle(helper.pageTitle()) //and for the title
+                        .build();
 
         helper.page("multiblock"); //next page
         var multiblockPreviewPage =
                 BookMultiblockPageModel.builder() //now a page to show a multiblock
-                .withMultiblockId("modonomicon:blockentity") //sample multiblock from modonomicon
-                .withMultiblockName("multiblocks.modonomicon.blockentity") //and the lang key for its name
-                .withText(helper.pageText()) //plus a page text
-                .build();
+                        .withMultiblockId("modonomicon:blockentity") //sample multiblock from modonomicon
+                        .withMultiblockName("multiblocks.modonomicon.blockentity") //and the lang key for its name
+                        .withText(helper.pageText()) //plus a page text
+                        .build();
 
         return BookEntryModel.builder()
                 .withId(this.modLoc(helper.category + "/" + helper.entry)) //make entry id from lang helper data
