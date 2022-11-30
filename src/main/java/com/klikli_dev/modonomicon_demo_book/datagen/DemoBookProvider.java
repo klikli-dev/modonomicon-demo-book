@@ -17,11 +17,12 @@ import com.klikli_dev.modonomicon.api.datagen.book.page.BookMultiblockPageModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookTextPageModel;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.data.LanguageProvider;
 
 public class DemoBookProvider extends BookProvider {
 
-    public DemoBookProvider(DataGenerator generator, String modid) {
-        super(generator, modid);
+    public DemoBookProvider(DataGenerator generator, String modid, LanguageProvider lang) {
+        super(generator, modid, lang);
     }
 
     private BookModel makeDemoBook(String bookName) {
