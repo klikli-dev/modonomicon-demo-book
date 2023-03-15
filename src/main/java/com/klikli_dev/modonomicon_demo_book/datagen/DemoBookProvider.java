@@ -42,6 +42,8 @@ public class DemoBookProvider extends BookProvider {
                 .withGenerateBookItem(true) //auto-generate a book item for us.
                 .withModel(new ResourceLocation("modonomicon:modonomicon_red")) //use the default red modonomicon icon for the book
                 .withCreativeTab("modonomicon") //and put it in the modonomicon tab
+                //Important: On 1.19.3 the creative tab takes a resource location:
+                //           .withCreativeTab(new ResourceLocation("modonomicon","modonomicon"))
                 .withCategories(featuresCategory)
                 .build();
         return demoBook;
