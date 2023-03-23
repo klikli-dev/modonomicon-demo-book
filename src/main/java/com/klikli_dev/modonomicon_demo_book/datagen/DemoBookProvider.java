@@ -35,15 +35,17 @@ public class DemoBookProvider extends BookProvider {
         var featuresCategory = this.makeFeaturesCategory(helper);
 
         //Now we create the book with settings of our choosing
-        var demoBook = BookModel.builder()
-                .withId(this.modLoc(bookName)) //the id of the book. modLoc() prepends the mod id.
-                .withName(helper.bookName()) //the name of the book. The lang helper gives us the correct translation key.
+        var demoBook = BookModel.create(
+                        this.modLoc(bookName), //the id of the book. modLoc() prepends the mod id.
+                        helper.bookName() //the name of the book. The lang helper gives us the correct translation key.
+                )
                 .withTooltip(helper.bookTooltip()) //the hover tooltip for the book. Again we get a translation key.
                 .withGenerateBookItem(true) //auto-generate a book item for us.
                 .withModel(new ResourceLocation("modonomicon:modonomicon_red")) //use the default red modonomicon icon for the book
                 .withCreativeTab("modonomicon") //and put it in the modonomicon tab
-                .withCategories(featuresCategory)
-                .build();
+                //Important: On 1.19.3 the creative tab takes a resource location:
+                //           .withCreativeTab(new ResourceLocation("modonomicon","modonomicon"))
+                .withCategories(featuresCategory);
         return demoBook;
     }
 
@@ -66,12 +68,12 @@ public class DemoBookProvider extends BookProvider {
         //place the multiblock entry where we put the "m" in the map above
         var multiblockEntry = this.makeMultiblockEntry(helper, entryHelper, 'm');
 
-        return BookCategoryModel.builder()
-                .withId(this.modLoc(helper.category)) //the id of the category, as stored in the lang helper. modLoc() prepends the mod id.
-                .withName(helper.categoryName()) //the name of the category. The lang helper gives us the correct translation key.
+        return BookCategoryModel.create(
+                        this.modLoc(helper.category), //the id of the category, as stored in the lang helper. modLoc() prepends the mod id.
+                        helper.categoryName() //the name of the category. The lang helper gives us the correct translation key.
+                )
                 .withIcon("minecraft:nether_star") //the icon for the category. In this case we simply use an existing item.
-                .withEntries(multiblockEntry)
-                .build();
+                .withEntries(multiblockEntry);
     }
 
     private BookEntryModel makeMultiblockEntry(BookLangHelper helper, EntryLocationHelper entryHelper, char location) {
