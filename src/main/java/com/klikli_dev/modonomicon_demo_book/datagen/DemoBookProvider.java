@@ -20,8 +20,8 @@ import net.minecraftforge.common.data.LanguageProvider;
 
 public class DemoBookProvider extends BookProvider {
 
-    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang) {
-        super("demo", packOutput, modid, lang);
+    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang, LanguageProvider... translations) {
+        super("demo", packOutput, modid, lang, translations);
     }
 
     @Override
