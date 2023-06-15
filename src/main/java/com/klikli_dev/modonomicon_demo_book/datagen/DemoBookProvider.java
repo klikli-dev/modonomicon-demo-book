@@ -15,15 +15,14 @@ import com.klikli_dev.modonomicon.api.datagen.book.BookEntryModel;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookMultiblockPageModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookTextPageModel;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class DemoBookProvider extends BookProvider {
 
-    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang) {
-        super(packOutput, modid, lang);
+    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang, LanguageProvider... translations) {
+        super(packOutput, modid, lang, translations);
     }
 
     private BookModel makeDemoBook(String bookName) {
@@ -32,6 +31,14 @@ public class DemoBookProvider extends BookProvider {
 
         //we tell the helper the book we're in.
         helper.book(bookName);
+
+        //we can reference the language providers in the book provider
+        this.lang().add(helper.bookName(), "Demo Book"); //and now we add the actual textual book name
+        this.lang().add(helper.bookTooltip(), "A book to showcase & test Modonomicon features."); //and the tooltip text
+
+        //similarly, you can add translations here:
+        this.lang("es_es").add(helper.bookName(), "Libro de demostración");
+        this.lang("es_es").add(helper.bookTooltip(), "Un libro para mostrar y probar las funciones de Modonomicon.");
 
         var featuresCategory = this.makeFeaturesCategory(helper);
 
@@ -50,6 +57,8 @@ public class DemoBookProvider extends BookProvider {
 
     private BookCategoryModel makeFeaturesCategory(BookLangHelper helper) {
         helper.category("features"); //tell our lang helper the category we are in
+        this.lang().add(helper.categoryName(), "Features Category"); //and provide the category name text
+        //here is where you would provide translations, as above with the book name and tooltip
 
         //the entry helper is the second helper for book datagen
         //it allows us to place entries in the category without manually defining the coordinates.
@@ -77,6 +86,8 @@ public class DemoBookProvider extends BookProvider {
 
     private BookEntryModel makeMultiblockEntry(BookLangHelper helper, EntryLocationHelper entryHelper, char location) {
         helper.entry("multiblock"); //tell our lang helper the entry we are in
+        this.lang().add(helper.entryName(), "Multiblock Entry"); //provide the entry name
+        this.lang().add(helper.entryDescription(), "An entry showcasing a multiblock."); //and description
 
         helper.page("intro"); //and now the page
         var multiBlockIntroPage =
@@ -84,14 +95,22 @@ public class DemoBookProvider extends BookProvider {
                         .withText(helper.pageText()) //lang key for the text
                         .withTitle(helper.pageTitle()) //and for the title
                         .build();
+        this.lang().add(helper.pageTitle(), "Multiblock Page"); //page title
+        this.lang().add(helper.pageText(), "Multiblock pages allow to preview multiblocks both in the book and in the world."); //page text
 
         helper.page("multiblock"); //next page
         var multiblockPreviewPage =
                 BookMultiblockPageModel.builder() //now a page to show a multiblock
                         .withMultiblockId("modonomicon:blockentity") //sample multiblock from modonomicon
-                        .withMultiblockName("multiblocks.modonomicon.blockentity") //and the lang key for its name
+                        .withMultiblockName("multiblocks.modonomicon_demo_book.blockentity") //and the lang key for its name
                         .withText(helper.pageText()) //plus a page text
                         .build();
+
+        //now provide the multiblock name
+        //the lang helper does not handle multiblocks, so we manually add the same key we provided in the DemoBookProvider
+        this.lang().add("multiblocks.modonomicon_demo_book.blockentity", "Blockentity Multiblock.");
+        //and the multiblock page text
+        this.lang().add(helper.pageText(), "A sample multiblock.");
 
         return BookEntryModel.builder()
                 .withId(this.modLoc(helper.category + "/" + helper.entry)) //make entry id from lang helper data

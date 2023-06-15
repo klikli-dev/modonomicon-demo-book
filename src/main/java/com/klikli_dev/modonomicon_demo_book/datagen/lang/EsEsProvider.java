@@ -9,10 +9,10 @@ package com.klikli_dev.modonomicon_demo_book.datagen.lang;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
-public class EnUsProvider extends LanguageProvider {
+public class EsEsProvider extends LanguageProvider {
 
-    public EnUsProvider(PackOutput packOutput, String modid) {
-        super(packOutput, modid, "en_us");
+    public EsEsProvider(PackOutput packOutput, String modid) {
+        super(packOutput, modid, "es_es");
     }
 
     protected void addTranslations() {

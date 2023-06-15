@@ -7,5 +7,5 @@
   "book.modonomicon_demo_book.demo.features.name": "Features Category",
   "book.modonomicon_demo_book.demo.name": "Demo Book",
   "book.modonomicon_demo_book.demo.tooltip": "A book to showcase & test Modonomicon features.",
-  "multiblocks.modonomicon.blockentity": "Blockentity Multiblock."
+  "multiblocks.modonomicon_demo_book.blockentity": "Blockentity Multiblock."
 }
