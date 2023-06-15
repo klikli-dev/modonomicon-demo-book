@@ -13,8 +13,8 @@ public class DataGenerators {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
 
-        var langProvider = new EnUsProvider(generator, ModonomiconDemoBook.MODID);
-        generator.addProvider(event.includeServer(), new DemoBookProvider(generator, ModonomiconDemoBook.MODID, langProvider));
+        var langProvider = new EnUsProvider(generator.getPackOutput(), ModonomiconDemoBook.MODID);
+        generator.addProvider(event.includeServer(), new DemoBookProvider(generator.getPackOutput(), ModonomiconDemoBook.MODID, langProvider));
         //Important: Lang provider needs to be added after the book provider to process the texts added by the book provider
         generator.addProvider(event.includeClient(), langProvider);
     }
