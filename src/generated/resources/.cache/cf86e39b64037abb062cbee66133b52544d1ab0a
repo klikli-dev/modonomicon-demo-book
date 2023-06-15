@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-// 1.19.2	2023-03-23T18:59:03.3699475	Books: modonomicon_demo_book
-d956dd7a943f1113818cdd065d98eba038269031 data/modonomicon_demo_book/modonomicon/books/demo/book.json
-=======
-// 1.20.1	2023-06-15T11:26:04.8581057	Books: modonomicon_demo_book
+// 1.20.1	2023-06-15T19:32:03.7001949	Books: modonomicon_demo_book
 cdf430382262dade20ada6965768428c3dc7c7f8 data/modonomicon_demo_book/modonomicon/books/demo/book.json
->>>>>>> main
 3897163ead6fed1708226f0b7bb08e244bef5424 data/modonomicon_demo_book/modonomicon/books/demo/categories/features.json
-6021faf13a7ffa53a4f02d50a6c3a7ae849afcea data/modonomicon_demo_book/modonomicon/books/demo/entries/features/multiblock.json
+fe0a269ab0778ba85f8b4786bf058c573998ed38 data/modonomicon_demo_book/modonomicon/books/demo/entries/features/multiblock.json
