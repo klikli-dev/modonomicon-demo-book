@@ -16,13 +16,14 @@ import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookMultiblockPageModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookTextPageModel;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class DemoBookProvider extends BookProvider {
 
-    public DemoBookProvider(DataGenerator generator, String modid, LanguageProvider lang) {
-        super(generator, modid, lang);
+    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang) {
+        super(packOutput, modid, lang);
     }
 
     private BookModel makeDemoBook(String bookName) {
@@ -34,7 +35,7 @@ public class DemoBookProvider extends BookProvider {
 
         var featuresCategory = this.makeFeaturesCategory(helper);
 
-        //Now we create the book with settings of our choosing
+        //Now we create the book with settings of our choice
         var demoBook = BookModel.create(
                         this.modLoc(bookName), //the id of the book. modLoc() prepends the mod id.
                         helper.bookName() //the name of the book. The lang helper gives us the correct translation key.
@@ -42,9 +43,7 @@ public class DemoBookProvider extends BookProvider {
                 .withTooltip(helper.bookTooltip()) //the hover tooltip for the book. Again we get a translation key.
                 .withGenerateBookItem(true) //auto-generate a book item for us.
                 .withModel(new ResourceLocation("modonomicon:modonomicon_red")) //use the default red modonomicon icon for the book
-                .withCreativeTab("modonomicon") //and put it in the modonomicon tab
-                //Important: On 1.19.3 the creative tab takes a resource location:
-                //           .withCreativeTab(new ResourceLocation("modonomicon","modonomicon"))
+                .withCreativeTab(new ResourceLocation("modonomicon", "modonomicon")) //and put it in the modonomicon tab
                 .withCategories(featuresCategory);
         return demoBook;
     }
