@@ -10,13 +10,14 @@ import com.klikli_dev.modonomicon.api.ModonomiconAPI;
 import com.klikli_dev.modonomicon.api.datagen.BookProvider;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class DemoBookProvider extends BookProvider {
 
-    public DemoBookProvider(DataGenerator generator, String modid, LanguageProvider lang) {
-        super(generator, modid, lang);
+    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang) {
+        super(packOutput, modid, lang);
     }
 
     private BookModel makeDemoBook(String bookName) {
@@ -34,9 +35,7 @@ public class DemoBookProvider extends BookProvider {
                 .withTooltip(helper.bookTooltip()) //the hover tooltip for the book. Again we get a translation key.
                 .withGenerateBookItem(true) //auto-generate a book item for us.
                 .withModel(new ResourceLocation("modonomicon:modonomicon_red")) //use the default red modonomicon icon for the book
-                .withCreativeTab("modonomicon") //and put it in the modonomicon tab
-                //Important: On 1.19.3 the creative tab takes a resource location:
-                //           .withCreativeTab(new ResourceLocation("modonomicon","modonomicon"))
+                .withCreativeTab(new ResourceLocation("modonomicon", "modonomicon")) //and put it in the modonomicon tab
                 ;
         return demoBook;
     }
