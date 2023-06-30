@@ -21,7 +21,7 @@ public class DemoBookProvider extends BookProvider {
     @Override
     protected BookModel generateBook() {
         var demoBook = BookModel.create(
-                        this.modLoc(this.context().book), //the id of the book. modLoc() prepends the mod id.
+                        this.modLoc(this.context().bookId()), //the id of the book. modLoc() prepends the mod id.
                         this.context().bookName() //the name of the book. The lang helper gives us the correct translation key.
                 )
                 .withTooltip(this.context().bookTooltip()) //the hover tooltip for the book. Again we get a translation key.
