@@ -35,11 +35,11 @@ public class DemoBookProvider extends BookProvider {
         this.lang("es_es").add(this.context().bookName(), "Libro de demostración");
         this.lang("es_es").add(this.context().bookTooltip(), "Un libro para mostrar y probar las funciones de Modonomicon.");
 
-        var featuresCategory = this.makeFeaturesCategory();
+        var featuresCategory = new FeaturesCategoryProvider(this, "features").generate();
 
         //Now we create the book with settings of our choice
         var demoBook = BookModel.create(
-                        this.modLoc(this.context().book), //the id of the book. modLoc() prepends the mod id.
+                        this.modLoc(this.context().bookId()), //the id of the book. modLoc() prepends the mod id.
                         this.context().bookName() //the name of the book. The lang helper gives us the correct translation key.
                 )
                 .withTooltip(this.context().bookTooltip()) //the hover tooltip for the book. Again we get a translation key.
@@ -55,7 +55,7 @@ public class DemoBookProvider extends BookProvider {
 
     @Override
     protected void registerDefaultMacros() {
-        //currently we have no macros - they only work with the CategoryProviders
+        //currently we have no macros
     }
 
     private BookCategoryModel makeFeaturesCategory() {
