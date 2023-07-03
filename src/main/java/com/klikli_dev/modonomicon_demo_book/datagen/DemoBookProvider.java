@@ -27,8 +27,9 @@ public class DemoBookProvider extends BookProvider {
                 .withTooltip(this.context().bookTooltip()) //the hover tooltip for the book. Again we get a translation key.
                 .withGenerateBookItem(true) //auto-generate a book item for us.
                 .withModel(new ResourceLocation("modonomicon:modonomicon_red")) //use the default red modonomicon icon for the book
-                .withCreativeTab(new ResourceLocation("modonomicon", "modonomicon")); //and put it in the modonomicon tab
-
+                .withCreativeTab(new ResourceLocation("modonomicon", "modonomicon")) //and put it in the modonomicon tab
+                ;
+        
         return demoBook;
     }
 
