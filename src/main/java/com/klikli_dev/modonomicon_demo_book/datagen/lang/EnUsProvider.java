@@ -16,5 +16,6 @@ public class EnUsProvider extends LanguageProvider {
     }
 
     protected void addTranslations() {
+        //Here you can do your normal translations
     }
 }
