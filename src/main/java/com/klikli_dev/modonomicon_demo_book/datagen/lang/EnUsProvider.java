@@ -6,7 +6,6 @@
 
 package com.klikli_dev.modonomicon_demo_book.datagen.lang;
 
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.LanguageProvider;
 
