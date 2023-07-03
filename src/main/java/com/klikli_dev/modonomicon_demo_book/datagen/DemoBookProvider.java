@@ -31,7 +31,6 @@ public class DemoBookProvider extends BookProvider {
 
         var featuresCategory = new FeaturesCategoryProvider(this, "features").generate();
 
-        //Now we create the book with settings of our choice
         var demoBook = BookModel.create(
                         this.modLoc(this.context().bookId()), //the id of the book. modLoc() prepends the mod id.
                         this.context().bookName() //the name of the book. The lang helper gives us the correct translation key.
