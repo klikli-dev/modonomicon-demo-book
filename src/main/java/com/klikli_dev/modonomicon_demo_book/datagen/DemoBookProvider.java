@@ -20,8 +20,6 @@ public class DemoBookProvider extends BookProvider {
 
     @Override
     protected BookModel generateBook() {
-
-
         var featuresCategory = new FeaturesCategoryProvider(this, "features").generate();
 
         var demoBook = BookModel.create(
@@ -43,5 +41,4 @@ public class DemoBookProvider extends BookProvider {
     protected void registerDefaultMacros() {
         //currently we have no macros
     }
-
 }
