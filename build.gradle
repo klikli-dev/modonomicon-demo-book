@@ -8,9 +8,6 @@ plugins {
 if (System.getenv('MOD_VERSION') != null) {
     mod_version = System.getenv('MOD_VERSION')
 }
-if (System.getenv('MINECRAFT_VERSION') != null) {
-    minecraft_version = System.getenv('MINECRAFT_VERSION')
-}
 version = "${minecraft_version}-${mod_version}"
 
 group = mod_group_id
@@ -115,43 +112,23 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name = "KliKli Dev Repsy Maven"
-        url = "https://repo.repsy.io/mvn/klikli-dev/mods"
+        url "https://dl.cloudsmith.io/public/klikli-dev/mods/maven/"
+        content {
+            includeGroup "com.klikli_dev"
+        }
     }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:${forge_version}"
 
-    compileOnly fg.deobf("com.klikli_dev:modonomicon:${minecraft_version}-${modonomicon_version}")
-    runtimeOnly fg.deobf("com.klikli_dev:modonomicon:${minecraft_version}-${modonomicon_version}")
+    compileOnly fg.deobf("com.klikli_dev:modonomicon-${minecraft_version}-common:${modonomicon_version}")
+    implementation fg.deobf("com.klikli_dev:modonomicon-${minecraft_version}-forge:${modonomicon_version}"){transitive=false}
 }
 
-// This block of code expands all declared replace properties in the specified resource targets.
-// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
-// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
-// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
-def resourceTargets = ['META-INF/mods.toml', 'pack.mcmeta']
-def replaceProperties = [
-        minecraft_version              : minecraft_version,
-        minecraft_version_range        : minecraft_version_range,
-        forge_version                  : forge_version,
-        forge_version_range            : forge_version_range,
-        loader_version_range           : loader_version_range,
-        mod_id                         : mod_id,
-        mod_name                       : mod_name,
-        mod_license                    : mod_license,
-        mod_version                    : mod_version,
-        mod_authors                    : mod_authors,
-        mod_description                : mod_description,
-        modonomicon_version_range      : modonomicon_version_range,
-]
 processResources {
-    inputs.properties replaceProperties
-    replaceProperties.put 'project', project
-
-    filesMatching(resourceTargets) {
-        expand replaceProperties
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand project.properties
     }
 }
 
