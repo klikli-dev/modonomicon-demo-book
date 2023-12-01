@@ -7,14 +7,14 @@
 package com.klikli_dev.modonomicon_demo_book.datagen;
 
 import com.klikli_dev.modonomicon.api.datagen.BookProvider;
+import com.klikli_dev.modonomicon.api.datagen.ModonomiconLanguageProvider;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.LanguageProvider;
 
 public class DemoBookProvider extends BookProvider {
 
-    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang, LanguageProvider... translations) {
+    public DemoBookProvider(PackOutput packOutput, String modid, ModonomiconLanguageProvider lang, ModonomiconLanguageProvider... translations) {
         super("demo", packOutput, modid, lang, translations);
     }
 
