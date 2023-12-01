@@ -6,13 +6,14 @@
 
 package com.klikli_dev.modonomicon_demo_book.datagen.lang;
 
+import com.klikli_dev.modonomicon.api.datagen.AbstractModonomiconLanguageProvider;
+import com.klikli_dev.modonomicon.api.datagen.ModonomiconLanguageProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
 
-public class EnUsProvider extends LanguageProvider {
+public class EnUsProvider extends AbstractModonomiconLanguageProvider {
 
-    public EnUsProvider(PackOutput packOutput, String modid) {
-        super(packOutput, modid, "en_us");
+    public EnUsProvider(PackOutput packOutput, String modid, ModonomiconLanguageProvider cachedProvider) {
+        super(packOutput, modid, "en_us", cachedProvider);
     }
 
     protected void addTranslations() {
