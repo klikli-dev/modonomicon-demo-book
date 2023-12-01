@@ -7,14 +7,14 @@
 package com.klikli_dev.modonomicon_demo_book.datagen;
 
 import com.klikli_dev.modonomicon.api.datagen.BookProvider;
+import com.klikli_dev.modonomicon.api.datagen.ModonomiconLanguageProvider;
 import com.klikli_dev.modonomicon.api.datagen.book.BookModel;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.common.data.LanguageProvider;
 
 public class DemoBookProvider extends BookProvider {
 
-    public DemoBookProvider(PackOutput packOutput, String modid, LanguageProvider lang, LanguageProvider... translations) {
+    public DemoBookProvider(PackOutput packOutput, String modid, ModonomiconLanguageProvider lang, ModonomiconLanguageProvider... translations) {
         super("demo", packOutput, modid, lang, translations);
     }
 
@@ -31,7 +31,6 @@ public class DemoBookProvider extends BookProvider {
 
         var featuresCategory = new FeaturesCategoryProvider(this, "features").generate();
 
-        //Now we create the book with settings of our choice
         var demoBook = BookModel.create(
                         this.modLoc(this.context().bookId()), //the id of the book. modLoc() prepends the mod id.
                         this.context().bookName() //the name of the book. The lang helper gives us the correct translation key.

@@ -6,13 +6,14 @@
 
 package com.klikli_dev.modonomicon_demo_book.datagen.lang;
 
+import com.klikli_dev.modonomicon.api.datagen.AbstractModonomiconLanguageProvider;
+import com.klikli_dev.modonomicon.api.datagen.ModonomiconLanguageProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.LanguageProvider;
 
-public class EsEsProvider extends LanguageProvider {
+public class EsEsProvider extends AbstractModonomiconLanguageProvider {
 
-    public EsEsProvider(PackOutput packOutput, String modid) {
-        super(packOutput, modid, "es_es");
+    public EsEsProvider(PackOutput packOutput, String modid, ModonomiconLanguageProvider cachedProvider) {
+        super(packOutput, modid, "es_es", cachedProvider);
     }
 
     protected void addTranslations() {
