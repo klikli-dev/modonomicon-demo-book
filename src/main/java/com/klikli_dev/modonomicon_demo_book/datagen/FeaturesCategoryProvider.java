@@ -6,6 +6,8 @@ import com.klikli_dev.modonomicon.api.datagen.book.BookCategoryModel;
 import com.klikli_dev.modonomicon.api.datagen.book.BookEntryModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookMultiblockPageModel;
 import com.klikli_dev.modonomicon.api.datagen.book.page.BookTextPageModel;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 public class FeaturesCategoryProvider extends CategoryProvider {
     public FeaturesCategoryProvider(BookProvider parent, String categoryId) {
@@ -38,7 +40,7 @@ public class FeaturesCategoryProvider extends CategoryProvider {
                         this.modLoc(this.context().categoryId()), //the id of the category, as stored in the lang helper. modLoc() prepends the mod id.
                         this.context().categoryName() //the name of the category. The lang helper gives us the correct translation key.
                 )
-                .withIcon("minecraft:nether_star"); //the icon for the category. In this case we simply use an existing item.
+                .withIcon(Items.NETHER_STAR); //the icon for the category. In this case we simply use an existing item.
 
     }
 
@@ -62,7 +64,7 @@ public class FeaturesCategoryProvider extends CategoryProvider {
                         .build();
 
         return this.entry(location) //create a new entry at the given location
-                .withIcon("minecraft:furnace") //we use furnace as icon
+                .withIcon(Blocks.FURNACE) //we use furnace as icon
                 .withPages(
                         multiBlockIntroPage,
                         multiblockPreviewPage

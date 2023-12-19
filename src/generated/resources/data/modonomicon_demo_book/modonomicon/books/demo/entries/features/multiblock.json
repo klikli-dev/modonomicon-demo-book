@@ -4,7 +4,9 @@
   "category": "modonomicon_demo_book:features",
   "description": "book.modonomicon_demo_book.demo.features.multiblock.description",
   "hide_while_locked": false,
-  "icon": "minecraft:furnace",
+  "icon": {
+    "item": "minecraft:furnace"
+  },
   "name": "book.modonomicon_demo_book.demo.features.multiblock.name",
   "pages": [
     {
