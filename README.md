@@ -6,6 +6,8 @@ SPDX-License-Identifier: MIT
 
 # Modonomicon Demo Book
 
+**Deprecated**: Please look at the modonomicon demo book in the modonomicon repository instead. [The Getting Started Guide](https://klikli-dev.github.io/modonomicon/docs/getting-started/) links to the relevant files.
+
 Demo Project to show how to use datagen to create books for https://github.com/klikli-dev/modonomicon 
 
 ## Licensing
